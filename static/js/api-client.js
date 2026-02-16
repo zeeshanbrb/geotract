@@ -91,13 +91,14 @@ class GeoTrackAPI {
                 return cached.data;
             }
         }
-
+        
         // Deduplicate concurrent requests
         if (this.pendingRequests.has(cacheKey)) {
             return this.pendingRequests.get(cacheKey);
         }
 
-        const headers = { 'Content-Type': 'application/json' };
+        const headers = { 'Content-Type': 'application/json',
+            'ngrok-skip-browser-warning': '69420' };
         
         if (!skipAuth) {
             const token = this.getToken();
